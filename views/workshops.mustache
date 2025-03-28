@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekend Workshops</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 60px 0;
+      background-color: #e8e8e8;
+    }
+
+    .workshop-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .workshop-body {
+      padding: 1rem;
+    }
+
+    .btn-details {
+      background-color: #8884d8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+    }
+
+    .btn-details:hover {
+      background-color: #6d6ab9;
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">Dance School</a>
+      <div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/classes">Weekly Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/workshops">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Admin Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 class="mb-5 text-center">Weekend Workshops</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {{#workshops}}
+          <div class="col">
+            <div class="workshop-card">
+              <div class="workshop-body">
+                <h5>{{name}}</h5>
+                <p><strong>Style:</strong> {{style}}</p>
+                <p><strong>Level:</strong> {{level}}</p>
+                <p><strong>Start Date:</strong> {{startDate}}</p>
+                <p><strong>End Date:</strong> {{endDate}}</p>
+                <p><strong>Time:</strong> {{time}}</p>
+                <p><strong>Price:</strong> £{{price}}</p>
+                <a href="/workshop/{{_id}}" class="btn btn-details">View Details</a>
+              </div>
+            </div>
+          </div>
+          {{/workshops}}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dance School | All rights reserved</p>
+  </footer>
+</body>
+</html>

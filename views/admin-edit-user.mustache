@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .container {
+      max-width: 600px;
+      padding: 60px 20px;
+    }
+    .btn-submit {
+      background-color: #8884d8;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+    }
+    .btn-submit:hover {
+      background-color: #6d6ab9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/admin/users" class="btn btn-outline-secondary mb-4">← Back to Users List</a>
+    <h2 class="mb-4">Edit User</h2>
+
+    <form method="post" action="/admin/users/edit">
+      <input type="hidden" name="id" value="{{_id}}">
+
+      <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input type="text" name="firstName" value="{{firstName}}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" name="lastName" value="{{lastName}}" class="form-control" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" value="{{email}}" class="form-control" required>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Role</label>
+        <select name="role" class="form-select" required>
+          <option value="admin" {{#isAdmin}}selected{{/isAdmin}}>Admin</option>
+          <option value="organiser" {{#isOrganiser}}selected{{/isOrganiser}}>Organiser</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-submit">Update User</button>
+    </form>
+  </div>
+
+  <footer class="text-center bg-light py-3 mt-auto">
+    <p>&copy; 2025 Dance School | All rights reserved</p>
+  </footer>
+</body>
+</html>

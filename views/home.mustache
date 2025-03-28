@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dance School</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .section-light { background-color: #f8f9fa; padding: 60px 0; }
+    .section-dark { background-color: #e8e8e8; padding: 60px 0; }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/hero.jpg') center center/cover no-repeat;
+      color: white;
+      text-align: center;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .hero p {
+      font-size: 1.3rem;
+    }
+    .class-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1rem;
+      height: 100%;
+    }
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-left: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #f1f1f1;
+    }
+    img.img-fluid {
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">Dance School</a>
+      <div>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/classes">Weekly Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/workshops">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Admin Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1 class="display-4 fw-bold">Welcome to Our Dance School</h1>
+    <p class="lead">Glasgow's Home of Dance</p>
+  </div>
+
+  <!-- About Us -->
+  <section class="section-light">
+    <div class="container text-center">
+      <h2 class="mb-4">About Us</h2>
+      <p>We opened in 2010 to provide accessible dance to adults. With experienced instructors and welcoming spaces, we teach all levels across multiple dance styles in the heart of Glasgow.</p>
+    </div>
+  </section>
+
+  <!-- Styles We Teach -->
+  <section class="section-dark">
+    <div class="container">
+      <h2 class="mb-5 text-center">Styles We Teach</h2>
+      <div class="row row-cols-1 row-cols-md-5 g-4">
+        <div class="col">
+          <div class="class-card text-center">
+            <img src="/images/ballet.jpg" class="img-fluid mb-2" alt="Ballet">
+            <h5>Ballet</h5>
+            <p>Graceful and classical technique for strength and posture.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="class-card text-center">
+            <img src="/images/jazz.jpg" class="img-fluid mb-2" alt="Jazz">
+            <h5>Jazz</h5>
+            <p>Energetic and fun style with theatrical expression.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="class-card text-center">
+            <img src="/images/tap.jpg" class="img-fluid mb-2" alt="Tap">
+            <h5>Tap</h5>
+            <p>Rhythmic footwork and percussive movement.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="class-card text-center">
+            <img src="/images/commercial.jpg" class="img-fluid mb-2" alt="Commercial">
+            <h5>Commercial</h5>
+            <p>Modern moves inspired by pop culture and videos.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="class-card text-center">
+            <img src="/images/heels.jpg" class="img-fluid mb-2" alt="Heels">
+            <h5>Heels</h5>
+            <p>Empowering dance style with bold attitude and technique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section class="section-light">
+    <div class="container text-center">
+      <h2 class="mb-4">Our Location</h2>
+      <p>Studio 22, Preston Clare</p>
+      <div class="ratio ratio-16x9">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2241.468080970172!2d-4.290627684020661!3d55.87744818058916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x488845e761bc289f%3A0x958e8d67b3a6e2f7!2sRuthven%20Ln%2C%20Glasgow%20G12%209BG%2C%20UK!5e0!3m2!1sen!2suk!4v1616415418727!5m2!1sen!2suk" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dance School | All rights reserved</p>
+  </footer>
+
+</body>
+</html>

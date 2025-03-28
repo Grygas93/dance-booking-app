@@ -1,0 +1,63 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    margin-top: auto;
+  }
+  
+  .navbar-nav .nav-link {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-left: 20px;
+  }
+  
+  .page-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+  }
+  
+  .login-box {
+    max-width: 400px;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-login,
+  .btn-book,
+  .btn-details {
+    background-color: #8884d8;
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-login:hover,
+  .btn-book:hover,
+  .btn-details:hover {
+    background-color: #6d6ab9;
+  }
+  
+  textarea {
+    overflow-y: hidden;
+    resize: none;
+  }
+  
