@@ -1,3 +1,4 @@
+//Create and load NeDB databse for enrollments
 const Datastore = require('nedb');
 const path = require('path');
 

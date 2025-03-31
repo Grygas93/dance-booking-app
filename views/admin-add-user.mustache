@@ -55,7 +55,9 @@
 
       <div class="mb-4">
         <label class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" required>
+       <input type="password" name="password" required
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+        title="Password must be at least 8 characters long and include uppercase, lowercase, and a number.">
       </div>
 
       <button type="submit" class="btn btn-submit">Add User</button>

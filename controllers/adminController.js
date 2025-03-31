@@ -4,7 +4,9 @@ const workshopBookingDB = require('../models/workshop-bookings');
 const enrollmentDB = require('../models/enrollments');
 const bookingDB = require('../models/bookings');
 const userDB = require('../models/users');
+const bcrypt = require('bcrypt');
 
+//Show admin dashborad
 exports.dashboard = (req, res) => {
   const user = req.session.user;
   const isAdmin = user.role === 'admin';
@@ -18,6 +20,7 @@ exports.dashboard = (req, res) => {
   });
 };
 
+//Show all classes
 exports.showClasses = (req, res) => {
   classDB.find({}, (err, classes) => {
     if (err) return res.status(500).send('Error reading classes.');
@@ -25,10 +28,12 @@ exports.showClasses = (req, res) => {
   });
 };
 
+//Show form to add a new class
 exports.addClassForm = (req, res) => {
   res.render('admin-add-class');
 };
 
+//Save a new class to the database
 exports.saveNewClass = (req, res) => {
   const { day, time, name, level, duration, location, price } = req.body;
   const newClass = { day, time, name, level, duration, location, price };
@@ -39,6 +44,7 @@ exports.saveNewClass = (req, res) => {
   });
 };
 
+//Show form to edit an existing class
 exports.editClassForm = (req, res) => {
   classDB.findOne({ _id: req.params.id }, (err, classData) => {
     if (!classData) return res.status(404).send('Class not found');
@@ -46,6 +52,7 @@ exports.editClassForm = (req, res) => {
   });
 };
 
+//Update an exisiting class
 exports.updateClass = (req, res) => {
   const { id, day, time, name, level } = req.body;
 
@@ -55,6 +62,7 @@ exports.updateClass = (req, res) => {
   });
 };
 
+//Delete a class
 exports.deleteClass = (req, res) => {
   classDB.remove({ _id: req.body.id }, {}, err => {
     if (err) return res.status(500).send('Error deleting class.');
@@ -62,7 +70,7 @@ exports.deleteClass = (req, res) => {
   });
 };
 
-
+//Show all workshops
 exports.showWorkshops = (req, res) => {
   workshopDB.find({}, (err, workshops) => {
     if (err) return res.status(500).send('Error loading workshops.');
@@ -70,20 +78,36 @@ exports.showWorkshops = (req, res) => {
   });
 };
 
+//Show form to add a new workshop
 exports.addWorkshopForm = (req, res) => {
   res.render('admin-add-workshop');
 };
 
+//Save new workshop to the database
 exports.saveNewWorkshop = (req, res) => {
-  const { name, style, level, startDate, endDate, time, price, description } = req.body;
-  const newWorkshop = { name, style, level, startDate, endDate, time, price, description };
+  const { name, style, level, time, price, description } = req.body;
 
-  workshopDB.insert(newWorkshop, err => {
+  const startDate = new Date(req.body.startDate).toISOString().split('T')[0];
+  const endDate = new Date(req.body.endDate).toISOString().split('T')[0];
+
+  const newWorkshop = {
+    name,
+    style,
+    level,
+    startDate,
+    endDate,
+    time,
+    price,
+    description,
+  };
+
+  workshopDB.insert(newWorkshop, (err) => {
     if (err) return res.status(500).send('Error adding workshop.');
     res.redirect('/admin/workshops');
   });
 };
 
+//Show form to edit an exisiting workshop 
 exports.editWorkshopForm = (req, res) => {
   workshopDB.findOne({ _id: req.params.id }, (err, workshop) => {
     if (!workshop) return res.status(404).send('Workshop not found.');
@@ -91,20 +115,37 @@ exports.editWorkshopForm = (req, res) => {
   });
 };
 
+//Update an exisiting workshop
 exports.updateWorkshop = (req, res) => {
-  const { id, name, style, level, startDate, endDate, time, price, description } = req.body;
+  const { id, name, style, level, time, price, description } = req.body;
+
+ 
+  const startDate = new Date(req.body.startDate).toISOString().split('T')[0];
+  const endDate = new Date(req.body.endDate).toISOString().split('T')[0];
 
   workshopDB.update(
     { _id: id },
-    { $set: { name, style, level, startDate, endDate, time, price, description } },
+    {
+      $set: {
+        name,
+        style,
+        level,
+        startDate,
+        endDate,
+        time,
+        price,
+        description,
+      },
+    },
     {},
-    err => {
+    (err) => {
       if (err) return res.status(500).send('Error updating workshop.');
       res.redirect('/admin/workshops');
     }
   );
 };
 
+//Delete a workshop
 exports.deleteWorkshop = (req, res) => {
   workshopDB.remove({ _id: req.body.id }, {}, err => {
     if (err) return res.status(500).send('Error deleting workshop.');
@@ -112,7 +153,7 @@ exports.deleteWorkshop = (req, res) => {
   });
 };
 
-
+//Show all bookings for a selected workshop
 exports.showWorkshopBookings = (req, res) => {
   const workshopId = req.query.workshopId;
   const query = workshopId ? { workshopId } : {};
@@ -137,6 +178,7 @@ exports.showWorkshopBookings = (req, res) => {
   });
 };
 
+//Delete a workshop booking
 exports.deleteWorkshopBooking = (req, res) => {
   const bookingId = req.body.id;
 
@@ -146,7 +188,7 @@ exports.deleteWorkshopBooking = (req, res) => {
   });
 };
 
-
+//Show all enrollments for a selected course
 exports.showEnrollments = (req, res) => {
   const courseId = req.query.courseId;
   const query = courseId ? { courseId } : {};
@@ -180,6 +222,7 @@ exports.showEnrollments = (req, res) => {
   });
 };
 
+//Delete an enrollment
 exports.deleteEnrollment = (req, res) => {
   enrollmentDB.remove({ _id: req.body.id }, {}, err => {
     if (err) return res.status(500).send('Error deleting enrollment.');
@@ -187,7 +230,7 @@ exports.deleteEnrollment = (req, res) => {
   });
 };
 
-
+//Show all class booking with filter
 exports.showClassBookings = (req, res) => {
   const type = req.query.type;
   const filter = type ? { classType: type } : {};
@@ -225,6 +268,7 @@ exports.showClassBookings = (req, res) => {
   });
 };
 
+//Delete a class booking
 exports.deleteClassBooking = (req, res) => {
   const bookingId = req.body.id;
 
@@ -234,26 +278,33 @@ exports.deleteClassBooking = (req, res) => {
   });
 };
 
-
+//Handle user login
 exports.handleLogin = (req, res) => {
   const { email, password } = req.body;
 
-  userDB.findOne({ email: email }, (err, user) => {
-    if (err || !user) return res.send('Invalid credentials');
-    if (user.password !== password) return res.send('Invalid credentials');
+  userDB.findOne({ email: email }, async (err, user) => {
+    if (err || !user) {
+      return res.send('Invalid credentials');
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.send('Invalid credentials');
+    }
 
     req.session.user = user;
     res.redirect('/admin');
   });
 };
 
+//Handle logout
 exports.logout = (req, res) => {
   req.session.destroy(() => {
     res.redirect('/');
   });
 };
 
-
+//Show all users
 exports.showUsers = (req, res) => {
   userDB.find({}, (err, users) => {
     if (err) return res.status(500).send('Error loading users.');
@@ -261,6 +312,7 @@ exports.showUsers = (req, res) => {
   });
 };
 
+//Delete a user (admin is protected)
 exports.deleteUser = (req, res) => {
   const userId = req.body.id;
 
@@ -276,10 +328,12 @@ exports.deleteUser = (req, res) => {
   });
 };
 
+//Show form to add a new user
 exports.addUserForm = (req, res) => {
   res.render('admin-add-user');
 };
 
+//Save a new user to the database
 exports.saveNewUser = (req, res) => {
   const { firstName, lastName, email, role, password } = req.body;
 
@@ -287,17 +341,30 @@ exports.saveNewUser = (req, res) => {
     return res.status(400).send('All fields are required.');
   }
 
-  userDB.findOne({ email }, (err, existingUser) => {
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  if (!passwordRegex.test(password)) {
+    return res.send('Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter, and a number.');
+  }
+
+  userDB.findOne({ email }, async (err, existingUser) => {
     if (err) return res.status(500).send('Database error.');
     if (existingUser) return res.send('A user with this email already exists.');
 
-    userDB.insert({ firstName, lastName, email, role, password }, err => {
-      if (err) return res.status(500).send('Error saving user.');
-      res.redirect('/admin/users');
-    });
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      userDB.insert({ firstName, lastName, email, role, password: hashedPassword }, err => {
+        if (err) return res.status(500).send('Error saving user.');
+        res.redirect('/admin/users');
+      });
+
+    } catch (error) {
+      res.status(500).send('Error hashing password.');
+    }
   });
 };
 
+//Show form to edit a user
 exports.editUserForm = (req, res) => {
   const userId = req.params.id;
 
@@ -316,6 +383,7 @@ exports.editUserForm = (req, res) => {
   });
 };
 
+//Update an existing user
 exports.updateUser = (req, res) => {
   const { id, firstName, lastName, email, role } = req.body;
 

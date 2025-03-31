@@ -5,17 +5,17 @@ const session = require('express-session');
 const app = express();
 const PORT = 3000;
 
-// MODELS (databases)
+//Models (databases)
 const classDB = require('./models/classes');
 const bookingDB = require('./models/bookings');
 const workshopDB = require('./models/workshops');
 const workshopBookingDB = require('./models/workshop-bookings');
 
-// ROUTES
+//Routes
 const publicRoutes = require('./routes/publicRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
-// SESSION 
+//Session
 app.use(
   session({
     secret: 'secret-key',
@@ -24,20 +24,20 @@ app.use(
   })
 );
 
-// MUSTACHE 
+//Mustache
 app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
-// STATIC FILES & FORMS
+//Static files and forms
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-// ROUTES
+//Routes
 app.use('/', publicRoutes);
 app.use('/', adminRoutes);
 
-// START SERVER
+//Start server
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

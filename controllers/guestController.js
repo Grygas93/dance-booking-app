@@ -3,12 +3,12 @@ const workshopDB = require('../models/workshops');
 const bookingDB = require('../models/bookings');
 const workshopBookingDB = require('../models/workshop-bookings');
 
-// Show homepage
+//Show homepage
 exports.home = (req, res) => {
   res.render('home');
 };
 
-// Show weekly classes, grouped by day
+//Show weekly classes, grouped by day
 exports.showClasses = (req, res) => {
   classDB.find({}, (err, classes) => {
     if (err) return res.status(500).send('Error reading classes.');
@@ -23,7 +23,7 @@ exports.showClasses = (req, res) => {
   });
 };
 
-// Show class details
+//Show class details
 exports.classDetails = (req, res) => {
   classDB.findOne({ _id: req.params.id }, (err, classData) => {
     if (!classData) return res.status(404).send('Class not found');
@@ -31,7 +31,7 @@ exports.classDetails = (req, res) => {
   });
 };
 
-// Book a class
+//Book a class
 exports.bookClass = (req, res) => {
   const { classId, name, email } = req.body;
   const booking = {
@@ -47,7 +47,7 @@ exports.bookClass = (req, res) => {
   });
 };
 
-// Show all workshops
+//Show all workshops
 exports.showWorkshops = (req, res) => {
   workshopDB.find({}, (err, workshops) => {
     if (err) return res.status(500).send("Error loading workshops.");
@@ -55,7 +55,7 @@ exports.showWorkshops = (req, res) => {
   });
 };
 
-// Show workshop details
+//Show workshop details
 exports.workshopDetails = (req, res) => {
   workshopDB.findOne({ _id: req.params.id }, (err, workshop) => {
     if (!workshop) return res.status(404).send('Workshop not found');
@@ -63,7 +63,7 @@ exports.workshopDetails = (req, res) => {
   });
 };
 
-// Book a workshop
+//Book a workshop
 exports.bookWorkshop = (req, res) => {
   const { workshopId, firstName, lastName, email } = req.body;
 
@@ -85,7 +85,7 @@ exports.bookWorkshop = (req, res) => {
   });
 };
 
-// Show admin login page
+//Show admin login page
 exports.loginPage = (req, res) => {
   res.render('login');
 };
