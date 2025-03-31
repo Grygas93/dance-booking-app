@@ -40,7 +40,7 @@ router.post('/admin/workshops/delete', verifyOrganiser, adminController.deleteWo
 router.get('/admin/workshop-bookings', verifyOrganiser, adminController.showWorkshopBookings)
 router.post('/admin/workshop-bookings/delete', verifyOrganiser, adminController.deleteWorkshopBooking)
 
-//Course Enrollments (admin + organiser)
+//Course Enrollments (admin + organiser))
 router.get('/admin/enrollments', verifyOrganiser, adminController.showEnrollments)
 router.post('/admin/enrollments/delete', verifyOrganiser, adminController.deleteEnrollment)
 
