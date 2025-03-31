@@ -38,7 +38,7 @@ http://localhost:3000
 - View workshops and book places
 - Mobile-responsive layout
 
-- Admin panel:
+Admin panel:
 - Login & logout
 - Admin and organiser roles
 - Access to full dashboard
@@ -48,7 +48,7 @@ http://localhost:3000
 - Password validation & hashing (bcrypt)
 - Session-based access control
 
-- Organiser panel:
+Organiser panel:
 - Login & logout
 - Access to organiser dashboard
 - Manage weekly classes & workshops
@@ -63,7 +63,9 @@ http://localhost:3000
 - Default admin protection (cannot delete or modify)
 
 ## Live Site
-This app is hosted on a free Railway or Render server, which may go to sleep when inactive. Please allow a few seconds for the app to wake up and load properly.
- (dancebookingapp-production.up.railway.app)
- (https://dance-booking-app.onrender.com)
 
+This app is hosted on a free Railway or Render server, which may go to sleep when inactive.  
+Please allow a few seconds for the app to wake up and load properly.
+
+-  [View on Railway](https://dancebookingapp-production.up.railway.app)  
+-  [View on Render](https://dance-booking-app.onrender.com)
