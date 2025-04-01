@@ -69,3 +69,7 @@ Please allow a few seconds for the app to wake up and load properly.
 
 -  [View on Railway](https://dancebookingapp-production.up.railway.app)  
 -  [View on Render](https://dance-booking-app.onrender.com)
+
+## Documentation
+
+- [Test Report (PDF)](./Test%20Report%20Anna%20Grygas.pdf)

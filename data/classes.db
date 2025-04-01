@@ -9,3 +9,9 @@
 {"day":"Thursday","time":"18:00","name":"Heels","level":"Intermediate","duration":"1h","location":"Studio 3","price":"10","_id":"MzISniNRcoGBOU8g"}
 {"day":"Monday","time":"17:00","name":"Ballet","level":"Beginner","duration":"45 min","location":"Studio 3","price":"6","_id":"UTPdyVpITmWBk0vr"}
 {"day":"Monday","time":"17:00","name":"Jazz","level":"Intermediate","duration":"1h","location":"Studio 4","price":"8","_id":"anBAYBisvyhudioj"}
+{"day":"Tuesday","time":"19:00","name":"Tap","level":"Advanced","duration":"1h 15min","location":"Studio 5","price":"12","_id":"JziZvMvJRZiLwwLM"}
+{"day":"Monday","time":"19:00","name":"Tap","level":"Advanced","duration":"1h 15min","location":"Studio 5","price":"12","_id":"JziZvMvJRZiLwwLM"}
+{"day":"Wednesday","time":"17:00","name":"Tap","level":"Beginner","duration":"1h","location":"Studio 5","price":"6","_id":"4rVIxwK1Sdiil9ym"}
+{"day":"Tuesday","time":"17:00","name":"Tap","level":"Beginner","duration":"1h","location":"Studio 5","price":"6","_id":"4rVIxwK1Sdiil9ym"}
+{"$$deleted":true,"_id":"4rVIxwK1Sdiil9ym"}
+{"day":"Monday","time":"10:00","name":"Heels","level":"Beginner","duration":"45 min","location":"Studio 3","price":"6","_id":"kiBj1140aX0NEh9H"}

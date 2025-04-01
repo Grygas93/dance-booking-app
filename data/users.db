@@ -1,2 +1,5 @@
 {"firstName":"Anna","lastName":"Grygas","email":"organiser@danceapp.com","role":"organiser","password":"$2b$10$bbheg4jvmaK62kjjtfmfbOvoIUR.O3LMNoh9t0AF0h0HGsLh/RVpm","_id":"GzF1HWYvewcj1GV3"}
 {"firstName":"Admin","lastName":"User","email":"admin@danceapp.com","role":"admin","password":"$2b$10$h3V849XjSBP9MZUfcRU9Jev1UoPCusQeMAMgk8nu1JYc21ILkL10S","_id":"saXr80oudpRpUrlT"}
+{"firstName":"Anna","lastName":"Smith","email":"organiser@danceapp.com","role":"admin","password":"$2b$10$bbheg4jvmaK62kjjtfmfbOvoIUR.O3LMNoh9t0AF0h0HGsLh/RVpm","_id":"GzF1HWYvewcj1GV3"}
+{"$$deleted":true,"_id":"GzF1HWYvewcj1GV3"}
+{"firstName":"Anna","lastName":"Grygas","email":"organiser@danceapp.com","role":"organiser","password":"$2b$10$Jok1lnf95sEzCptVGm/0hOukIMkstStWFfMrL7.lF/pUYoOZERuIS","_id":"AYpYj1dP0JT4HoX5"}
